@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-node@v6.0.0
         with:
           node-version: 22.17.0
+          
        #uso do pipe (|) quando for executar mais de um comando no step   
       - name: Mocha and dependencies install
         run: |
@@ -31,4 +32,15 @@ jobs:
 
       - name: Test execution
         run: mocha src/test/convert.js
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: src
+          file: src/Dockerfile
+          push: true
+          tag: |
+            chaosdevandy/conversao-temperatura:v1
+            chaosdevandy/conversao-temperatura:latest
+
         
