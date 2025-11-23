@@ -22,10 +22,13 @@ jobs:
         uses: actions/setup-node@v6.0.0
         with:
           node-version: 22.17.0
-          
+       #uso do pipe (|) quando for executar mais de um comando no step   
       - name: Mocha and dependencies install
         run: |
           cd src;
           npm install -g mocha;
           npm install
+
+      - name: Test execution
+        run: mocha src/test/convert.js
         
