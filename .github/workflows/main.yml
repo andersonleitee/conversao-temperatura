@@ -33,6 +33,15 @@ jobs:
       - name: Test execution
         run: mocha src/test/convert.js
 
+      - name: Verifica se os Secrets Existem
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ]; then
+          echo "Erro: DOCKERHUB_USERNAME está vazio!"
+          exit 1
+          fi
+          echo "DOCKERHUB_USERNAME foi preenchido (não será exibido)."
+           # NÃO faça isso com a senha!          
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3.6.0
         with:
