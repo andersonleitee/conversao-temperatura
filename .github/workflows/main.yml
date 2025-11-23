@@ -15,5 +15,11 @@ jobs:
       actions: read
       
     steps:
-      - name: Obtendo o código fonte
+      - name: Checkout repository
         uses: actions/checkout@v4.1.2
+        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6.0.0
+        with:
+          node-version: 22.17.0
+        
