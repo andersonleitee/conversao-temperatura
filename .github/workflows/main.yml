@@ -1,13 +1,19 @@
 name: CI
-
-on:
+on: 
   push:
-    branches: [master]
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-  build:
+  CI:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      security-events: write
+      actions: read
+      
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Obtendo o código fonte
+        uses: actions/checkout@v4.1.2
