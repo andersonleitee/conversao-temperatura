@@ -34,10 +34,10 @@ jobs:
         run: mocha src/test/convert.js
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v3.6.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }} # Use um Personal Access Token, não a senha da conta
+          password: ${{ secrets.DOCKERHUB_PASSWORD }} # Use um Personal Access Token, não a senha da conta
       
 
       - name: Build and push Docker images
